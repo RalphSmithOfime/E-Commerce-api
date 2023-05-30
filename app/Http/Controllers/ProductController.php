@@ -64,18 +64,18 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $id)
     {
-        return new ProductResource($product);
+        //return new ProductResource($product);
         
-        /*
+        
         $product = Product::findOrFail($id);
 
         if (!$product) {
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        return ($product);*/
+        return ($product);
     }
 
     /**
@@ -115,6 +115,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
